@@ -8,22 +8,23 @@
 
 import UIKit
 import CoreData
+import AddressBookUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, ABPeoplePickerNavigationControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let splitViewController = self.window!.rootViewController as UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
 
-        let masterNavigationController = splitViewController.viewControllers[0] as UINavigationController
-        let controller = masterNavigationController.topViewController as MasterViewController
+        let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+        let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.managedObjectContext
         return true
     }
@@ -70,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "KPW._Strokes" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -127,6 +128,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
     }
+
+
+    func didTouchUpInsidePickButton(item: UIBarButtonItem){
+        let picker = ABPeoplePickerNavigationController()
+        picker.peoplePickerDelegate = self
+        if picker.respondsToSelector(Selector("predicateForEnablingPerson")){
+            picker.predicateForEnablingPerson = NSPredicate(format: "emailAddresses.@count > 0")
+        }
+
+        presentViewController(picker, animated: true, completion: nil)
+    }
+
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
+        let emails: ABMultiValueRef = ABRecordCopyValue(person, kABPersonEmailProperty).takeRetainedValue()
+        if(ABMultiValueGetCount(emails) > 0){
+            let index = 0 as CFIndex
+            let email = ABMultiValueCopyValueAtIndex(emails, index).takeRetainedValue() as! String
+
+            println("First email for selected contact = \(email)")
+        }else{
+            println("No email address")
+        }
+    }
+
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, shouldContinueAfterSelectingPerson person: ABRecord!) -> Bool {
+        peoplePickerNavigationController(peoplePicker, didSelectPerson: person)
+        peoplePicker.dismissViewControllerAnimated(true, completion: nil)
+
+        return false;
+    }
+
+    func peoplePickerNavigationControllerDidCancel(peoplePicker: ABPeoplePickerNavigationController!) {
+        peoplePicker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 
 }
 

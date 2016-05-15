@@ -15,6 +15,14 @@
 		C935B42A1AB3CC7500B6C903 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C935B4291AB3CC7500B6C903 /* Images.xcassets */; };
 		C935B42D1AB3CC7500B6C903 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C935B42B1AB3CC7500B6C903 /* LaunchScreen.xib */; };
 		C935B4391AB3CC7500B6C903 /* _StrokesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C935B4381AB3CC7500B6C903 /* _StrokesTests.swift */; };
+		C962240D1AD370F9002FD2AC /* BezierInterpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962240C1AD370F9002FD2AC /* BezierInterpView.swift */; };
+		C962240E1AD370F9002FD2AC /* BezierInterpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962240C1AD370F9002FD2AC /* BezierInterpView.swift */; };
+		C96224101AD37684002FD2AC /* SmoothedBIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962240F1AD37684002FD2AC /* SmoothedBIView.swift */; };
+		C96224111AD37684002FD2AC /* SmoothedBIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962240F1AD37684002FD2AC /* SmoothedBIView.swift */; };
+		C96782771AD05B7800EB6F17 /* CachedLIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96782761AD05B7800EB6F17 /* CachedLIView.swift */; };
+		C96782781AD05B7800EB6F17 /* CachedLIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96782761AD05B7800EB6F17 /* CachedLIView.swift */; };
+		C9C4EF931ABA77F9000FAC4D /* LinearInterpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4EF921ABA77F9000FAC4D /* LinearInterpView.swift */; };
+		C9C4EF941ABA77F9000FAC4D /* LinearInterpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4EF921ABA77F9000FAC4D /* LinearInterpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +48,10 @@
 		C935B4321AB3CC7500B6C903 /* 4StrokesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 4StrokesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C935B4371AB3CC7500B6C903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C935B4381AB3CC7500B6C903 /* _StrokesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _StrokesTests.swift; sourceTree = "<group>"; };
+		C962240C1AD370F9002FD2AC /* BezierInterpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierInterpView.swift; sourceTree = "<group>"; };
+		C962240F1AD37684002FD2AC /* SmoothedBIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmoothedBIView.swift; sourceTree = "<group>"; };
+		C96782761AD05B7800EB6F17 /* CachedLIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedLIView.swift; sourceTree = "<group>"; };
+		C9C4EF921ABA77F9000FAC4D /* LinearInterpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearInterpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +94,12 @@
 			isa = PBXGroup;
 			children = (
 				C935B41D1AB3CC7500B6C903 /* AppDelegate.swift */,
-				C935B4221AB3CC7500B6C903 /* MasterViewController.swift */,
-				C935B4241AB3CC7500B6C903 /* DetailViewController.swift */,
+				C96782791AD06C7000EB6F17 /* Controllers */,
+				C967827A1AD06C7C00EB6F17 /* Views */,
 				C935B4261AB3CC7500B6C903 /* Main.storyboard */,
 				C935B4291AB3CC7500B6C903 /* Images.xcassets */,
 				C935B42B1AB3CC7500B6C903 /* LaunchScreen.xib */,
-				C935B41F1AB3CC7500B6C903 /* _Strokes.xcdatamodeld */,
+				C967827B1AD06C9100EB6F17 /* Models */,
 				C935B41B1AB3CC7500B6C903 /* Supporting Files */,
 			);
 			path = 4Strokes;
@@ -116,6 +128,34 @@
 				C935B4371AB3CC7500B6C903 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C96782791AD06C7000EB6F17 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C935B4221AB3CC7500B6C903 /* MasterViewController.swift */,
+				C935B4241AB3CC7500B6C903 /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C967827A1AD06C7C00EB6F17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C96782761AD05B7800EB6F17 /* CachedLIView.swift */,
+				C9C4EF921ABA77F9000FAC4D /* LinearInterpView.swift */,
+				C962240C1AD370F9002FD2AC /* BezierInterpView.swift */,
+				C962240F1AD37684002FD2AC /* SmoothedBIView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C967827B1AD06C9100EB6F17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C935B41F1AB3CC7500B6C903 /* _Strokes.xcdatamodeld */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,10 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96224101AD37684002FD2AC /* SmoothedBIView.swift in Sources */,
+				C962240D1AD370F9002FD2AC /* BezierInterpView.swift in Sources */,
+				C9C4EF931ABA77F9000FAC4D /* LinearInterpView.swift in Sources */,
 				C935B41E1AB3CC7500B6C903 /* AppDelegate.swift in Sources */,
 				C935B4211AB3CC7500B6C903 /* _Strokes.xcdatamodeld in Sources */,
 				C935B4231AB3CC7500B6C903 /* MasterViewController.swift in Sources */,
 				C935B4251AB3CC7500B6C903 /* DetailViewController.swift in Sources */,
+				C96782771AD05B7800EB6F17 /* CachedLIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96224111AD37684002FD2AC /* SmoothedBIView.swift in Sources */,
 				C935B4391AB3CC7500B6C903 /* _StrokesTests.swift in Sources */,
+				C9C4EF941ABA77F9000FAC4D /* LinearInterpView.swift in Sources */,
+				C96782781AD05B7800EB6F17 /* CachedLIView.swift in Sources */,
+				C962240E1AD370F9002FD2AC /* BezierInterpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +463,7 @@
 				C935B43E1AB3CC7500B6C903 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C935B43F1AB3CC7500B6C903 /* Build configuration list for PBXNativeTarget "4StrokesTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +472,7 @@
 				C935B4411AB3CC7500B6C903 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
